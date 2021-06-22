@@ -10,6 +10,9 @@ k3sup install --ip=10.68.0.143 --user=root --k3s-version=v1.18.8+k3s1
 
 ### Pod
 
+- criar namespace
+kubectl create namespace suse-k8s
+
 ``` bash
 kubectl apply -f pod.yaml
 kubectl logs myapp-pod
