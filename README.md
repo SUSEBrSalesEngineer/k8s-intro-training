@@ -2,8 +2,19 @@
 
 ## Deploy K3s
 
+The install.sh script provides a convenient way to download K3s and add a service to systemd or openrc.
+
+To install k3s as a service just run:
 ```bash
-k3sup install --ip=10.68.0.143 --user=root --k3s-version=v1.18.8+k3s1
+curl -sfL https://get.k3s.io | sh -
+```
+A kubeconfig file is written to /etc/rancher/k3s/k3s.yaml and the service is automatically started or restarted. The install script will install K3s and additional utilities, such as kubectl, crictl, k3s-killall.sh, and k3s-uninstall.sh, for example:
+```bash
+sudo kubectl get nodes
+```
+K3S_TOKEN is created at /var/lib/rancher/k3s/server/node-token on your server. To install on worker nodes we should pass K3S_URL along with K3S_TOKEN or K3S_CLUSTER_SECRET environment variables, for example:
+```bash
+curl -sfL https://get.k3s.io | K3S_URL=https://myserver:6443 K3S_TOKEN=XXX sh -
 ```
 
 ## Kubernetes
