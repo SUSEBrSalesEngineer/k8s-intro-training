@@ -124,8 +124,14 @@ kubectl apply -k deployment/overlay/ingress/fanout
 kustomize build rancher-demo/base
 kubectl apply -k rancher-demo/base
 ```
-
 - visit <https://training-a.cl.monach.us/>
+
+### Load Balancer (metalLB)
+``` bash
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/manifests/namespace.yaml
+kubectl apply -f https://raw.githubusercontent.com/metallb/metallb/v0.10.2/manifests/metallb.yaml
+```
+
 
 ## Rancher
 
